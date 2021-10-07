@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
@@ -15,11 +17,20 @@ module.exports = {
           100: '#2BA6CB',
           200: '#2184A1'
         },
-        green: '#5CA422',
-        red: '#960D0F'
+        green: {
+          100: '#B0D297',
+          200: '#5CA422',
+          300: '#529220'
+        },
+        red: {
+          100: '#E7918E',
+          200:'#C70F13',
+          300: '#960D0F',
+        },
       },
       width: {
-        custom: '60rem',
+        custom50: '50rem',
+        custom60: '60rem',
       },
       height: {
         30: '7.5rem',
