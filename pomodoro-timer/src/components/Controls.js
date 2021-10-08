@@ -6,7 +6,8 @@ const Controls = () => {
     md:justify-between">
       <button 
       className="bg-green-200 hover:bg-green-300 h-14 text-white font-bold rounded relative
-      before:absolute before:top-0 before:h-14 before:rounded before:bg-green-100 before:empty-content">
+      before:absolute before:h-full before:w-full before:rounded 
+      before:bg-green-100 before:block">
         Start
       </button>
       <button className="bg-red-200 hover:bg-red-300 h-14 text-white font-bold rounded">Stop</button>
@@ -16,3 +17,4 @@ const Controls = () => {
 }
 
 export default Controls;
+

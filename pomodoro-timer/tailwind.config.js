@@ -37,8 +37,43 @@ module.exports = {
       },
     },
   },
+
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: [
+        'before',
+        'after',
+      ],
+      position: [
+        'before',
+        'after',
+      ],
+      height: [
+        'before',
+        'after',
+      ],
+      borderRadius: [
+        'before',
+        'after',
+      ],
+      display: [
+        'before',
+        'after',
+      ],
+    },
   },
-  plugins: [],
+
+  plugins: [
+    require('tailwindcss-pseudo-elements'),
+    plugin(({addUtilities}) => {
+      const newUtilities = {
+        ".empty-content": {
+          content: "''",
+        },
+      }
+      addUtilities(newUtilities, {
+        variants: ["before", "after"],
+      });
+    })
+  ],
 }
