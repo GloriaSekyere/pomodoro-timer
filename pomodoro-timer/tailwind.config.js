@@ -52,11 +52,19 @@ module.exports = {
         'before',
         'after',
       ],
+      width: [
+        'before',
+        'after',
+      ],
       borderRadius: [
         'before',
         'after',
       ],
       display: [
+        'before',
+        'after',
+      ],
+      inset: [
         'before',
         'after',
       ],
