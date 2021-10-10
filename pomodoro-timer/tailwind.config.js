@@ -29,6 +29,8 @@ module.exports = {
         },
       },
       width: {
+        custom26: '26rem',
+        custom28: '28rem',
         custom50: '50rem',
         custom60: '60rem',
       },
