@@ -4,17 +4,21 @@ import BlueButton from './components/BlueButton';
 import { Keyboard } from './components/Keyboard';
 import { Notifications } from './components/Notifications';
 import { Setings } from './components/Setings';
+import { Timer } from './components/Timer';
 
 function App() {
   return (
     <>
       <Navbar />
-      <div className="py-7 px-4 divide-x divide-blue-300 flex 
+
+      <div className="pt-7 px-4 divide-x divide-blue-300 flex 
       justify-center items-center w-full mx-auto md:w-custom50">
         <BlueButton width="1/3" padding="1.5" content="Pomodoro" />
         <BlueButton width="1/3" padding="1.5" content="Short Break" />
         <BlueButton width="1/3" padding="1.5" content="Long Break" />
       </div>
+
+      <Timer />
 
       <div className="flex flex-col w-full px-8 mx-auto
     md:justify-between md:flex-row md:w-custom26 lg:w-custom28">
@@ -48,9 +52,12 @@ function App() {
         </Controls>
       </div>
 
+      <div className="flex flex-col w-full mx-auto
+      lg:flex-row lg:justify-between lg:items-start lg:w-custom60">
       <Keyboard />
       <Notifications />
       <Setings />
+      </div>
     </>
   );
 }

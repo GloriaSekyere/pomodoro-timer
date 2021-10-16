@@ -33,6 +33,7 @@ module.exports = {
         },
       },
       width: {
+        custom18: '18rem',
         custom26: '26rem',
         custom28: '28rem',
         custom50: '50rem',
