@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Controls from './components/Controls';
 import Navbar from './components/Navbar';
 import BlueButton from './components/BlueButton';
@@ -7,6 +8,15 @@ import { Setings } from './components/Setings';
 import { Timer } from './components/Timer';
 
 function App() {
+  let date = new Date().getMinutes;
+  const [start, setStart] = useState("25:05")
+  
+  const handleStart = () => {
+    setInterval(
+      setStart(date,
+      1000));
+  }
+
   return (
     <>
       <Navbar />
@@ -28,7 +38,8 @@ function App() {
           borderColor="green-400"
           beforeColor="green-100"
           afterColor="green-300"
-          textColor="white">
+          textColor="white"
+          handleStart={handleStart}>
           Start
         </Controls>
 
@@ -38,7 +49,8 @@ function App() {
           borderColor="red-400"
           beforeColor="red-100"
           afterColor="red-300"
-          textColor="white">
+          textColor="white"
+          handleStart={handleStart}>
           Stop
         </Controls>
 
@@ -47,7 +59,8 @@ function App() {
           hoverBackgroundColor="gray-400"
           borderColor="gray-400"
           beforeColor="gray-100"
-          afterColor="gray-400">
+          afterColor="gray-400"
+          handleStart={handleStart}>
           Reset
         </Controls>
       </div>

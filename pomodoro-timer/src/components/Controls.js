@@ -12,7 +12,8 @@ const Controls = (props) => {
         after:bg-${props.afterColor}
         text-${props.textColor}
         control-button`
-      }>
+      }
+      onClick={() => props.handleStart()}>
         {props.children}
       </button>
   )
