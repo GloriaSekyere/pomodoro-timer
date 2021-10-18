@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Controls from './components/Controls';
 import Navbar from './components/Navbar';
 import BlueButton from './components/BlueButton';
@@ -8,15 +8,20 @@ import { Setings } from './components/Setings';
 import { Timer } from './components/Timer';
 
 function App() {
-  let date = new Date().getMinutes;
-  const [start, setStart] = useState("25:05")
+  const [seconds, setSeconds] = useState(1500);
   
-  const handleStart = () => {
-    setInterval(
-      setStart(date,
-      1000));
-  }
+  useEffect(() => {
+    setInterval(() => {
+      setSeconds(seconds => seconds)},
+      1000
+    );
+  });
 
+  const stopTimer = () => {
+
+  }
+  let min = Math.floor(seconds / 60);
+  let sec = Math.ceil(seconds % 60);
   return (
     <>
       <Navbar />
@@ -28,7 +33,11 @@ function App() {
         <BlueButton width="1/3" padding="1.5" content="Long Break" />
       </div>
 
-      <Timer />
+      <div className='my-10 mx-auto w-full h-30 flex justify-center items-center'>
+      <span className='font-bold block text-8xl'>
+        {min}:{sec ?  sec : '00'}
+      </span>
+      </div>
 
       <div className="flex flex-col w-full px-8 mx-auto
     md:justify-between md:flex-row md:w-custom26 lg:w-custom28">
@@ -38,8 +47,7 @@ function App() {
           borderColor="green-400"
           beforeColor="green-100"
           afterColor="green-300"
-          textColor="white"
-          handleStart={handleStart}>
+          textColor="white">
           Start
         </Controls>
 
@@ -50,7 +58,7 @@ function App() {
           beforeColor="red-100"
           afterColor="red-300"
           textColor="white"
-          handleStart={handleStart}>
+          handleClick={stopTimer}>
           Stop
         </Controls>
 
@@ -59,8 +67,7 @@ function App() {
           hoverBackgroundColor="gray-400"
           borderColor="gray-400"
           beforeColor="gray-100"
-          afterColor="gray-400"
-          handleStart={handleStart}>
+          afterColor="gray-400">
           Reset
         </Controls>
       </div>
