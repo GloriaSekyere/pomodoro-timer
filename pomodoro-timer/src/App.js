@@ -5,23 +5,34 @@ import BlueButton from './components/BlueButton';
 import { Keyboard } from './components/Keyboard';
 import { Notifications } from './components/Notifications';
 import { Setings } from './components/Setings';
-import { Timer } from './components/Timer';
 
 function App() {
   const [seconds, setSeconds] = useState(1500);
+  const [isRunning, setIsRunning] = useState(true);
   
   useEffect(() => {
-    setInterval(() => {
-      setSeconds(seconds => seconds)},
-      1000
-    );
-  });
+    if (isRunning) {
+      const id = setInterval(() => {
+      setSeconds(seconds => seconds - 1)},
+      1000);
+      return () => clearInterval(id);
+    } 
+  },[isRunning]);
 
-  const stopTimer = () => {
-
-  }
   let min = Math.floor(seconds / 60);
   let sec = Math.ceil(seconds % 60);
+
+  const start = () => {
+    setIsRunning(true);
+    console.log(isRunning);
+  }
+  const stop = () => {
+    setIsRunning(false);
+    console.log(isRunning);
+  }
+  const reset = () => {
+    setSeconds(1500);
+  }
   return (
     <>
       <Navbar />
@@ -35,7 +46,7 @@ function App() {
 
       <div className='my-10 mx-auto w-full h-30 flex justify-center items-center'>
       <span className='font-bold block text-8xl'>
-        {min}:{sec ?  sec : '00'}
+        {min}:{sec.length < 2 ? `0${sec}`: sec}
       </span>
       </div>
 
@@ -47,7 +58,8 @@ function App() {
           borderColor="green-400"
           beforeColor="green-100"
           afterColor="green-300"
-          textColor="white">
+          textColor="white"
+          handleClick={start}>
           Start
         </Controls>
 
@@ -58,7 +70,7 @@ function App() {
           beforeColor="red-100"
           afterColor="red-300"
           textColor="white"
-          handleClick={stopTimer}>
+          handleClick={stop}>
           Stop
         </Controls>
 
@@ -67,7 +79,8 @@ function App() {
           hoverBackgroundColor="gray-400"
           borderColor="gray-400"
           beforeColor="gray-100"
-          afterColor="gray-400">
+          afterColor="gray-400"
+          handleClick={reset}>
           Reset
         </Controls>
       </div>

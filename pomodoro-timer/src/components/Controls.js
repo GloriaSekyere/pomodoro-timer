@@ -4,6 +4,7 @@ import '../index.css';
 const Controls = (props) => {
   return (
       <button 
+      onClick={props.handleClick}
       className={`  
         bg-${props.backgroundColor}
         hover:bg-${props.hoverBackgroundColor}
