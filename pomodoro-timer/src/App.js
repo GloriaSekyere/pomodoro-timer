@@ -46,7 +46,7 @@ function App() {
 
       <div className='my-10 mx-auto w-full h-30 flex justify-center items-center'>
       <span className='font-bold block text-8xl'>
-        {min}:{sec.length < 2 ? `0${sec}`: sec}
+        {min}:{sec.toString().length < 2 ? `0${sec}`: sec}
       </span>
       </div>
 
