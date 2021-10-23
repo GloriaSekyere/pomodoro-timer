@@ -8,7 +8,7 @@ import { Setings } from './components/Setings';
 
 function App() {
   const [seconds, setSeconds] = useState(1500);
-  const [isRunning, setIsRunning] = useState(true);
+  const [isRunning, setIsRunning] = useState(false);
   
   useEffect(() => {
     if (isRunning) {
@@ -24,12 +24,12 @@ function App() {
 
   const start = () => {
     setIsRunning(true);
-    console.log(isRunning);
   }
+
   const stop = () => {
     setIsRunning(false);
-    console.log(isRunning);
   }
+
   const reset = () => {
     setSeconds(1500);
   }
