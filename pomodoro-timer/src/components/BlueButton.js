@@ -3,11 +3,12 @@ import {Link} from 'react-router-dom';
 
 function BlueButton(props) {
   return (
-      <Link to="/" 
+      <button 
+      onClick={props.handleClick}
       className={`blue-button w-${props.width} py-${props.padding} text-${props.size} lg:text-${props.lgSize}
       mt-${props.marginTop} lg:w-${props.lgWidth}`}>
         {props.content}
-      </Link>
+      </button>
   )
 }
 

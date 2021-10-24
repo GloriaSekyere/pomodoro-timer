@@ -7,7 +7,8 @@ import { Notifications } from './components/Notifications';
 import { Setings } from './components/Setings';
 
 function App() {
-  const [seconds, setSeconds] = useState(1500);
+  let initialSec = 1500;
+  const [seconds, setSeconds] = useState(initialSec);
   const [isRunning, setIsRunning] = useState(false);
   
   useEffect(() => {
@@ -22,6 +23,22 @@ function App() {
   let min = Math.floor(seconds / 60);
   let sec = Math.ceil(seconds % 60);
 
+  const pomodoro = () => {
+    initialSec = 1500;
+    setSeconds(initialSec);
+    setIsRunning(true);
+  }
+  const shortBreak = () => {
+    initialSec = 300;
+    setSeconds(initialSec);
+    setIsRunning(true);
+  }
+  const longBreak = () => {
+    initialSec = 600;
+    setSeconds(initialSec);
+    setIsRunning(true);
+  }
+
   const start = () => {
     setIsRunning(true);
   }
@@ -31,7 +48,7 @@ function App() {
   }
 
   const reset = () => {
-    setSeconds(1500);
+    setSeconds(initialSec);
   }
   return (
     <>
@@ -39,14 +56,14 @@ function App() {
 
       <div className="pt-7 px-4 divide-x divide-blue-300 flex 
       justify-center items-center w-full mx-auto md:w-custom50">
-        <BlueButton width="1/3" padding="1.5" content="Pomodoro" />
-        <BlueButton width="1/3" padding="1.5" content="Short Break" />
-        <BlueButton width="1/3" padding="1.5" content="Long Break" />
+        <BlueButton width="1/3" padding="1.5" content="Pomodoro" handleClick={pomodoro} />
+        <BlueButton width="1/3" padding="1.5" content="Short Break" handleClick={shortBreak} />
+        <BlueButton width="1/3" padding="1.5" content="Long Break" handleClick={longBreak} />
       </div>
 
       <div className='my-10 mx-auto w-full h-30 flex justify-center items-center'>
       <span className='font-bold block text-8xl'>
-        {min}:{sec.toString().length < 2 ? `0${sec}`: sec}
+        {min.toString().length < 2 ? `0${min}`: min}:{sec.toString().length < 2 ? `0${sec}`: sec}
       </span>
       </div>
 
