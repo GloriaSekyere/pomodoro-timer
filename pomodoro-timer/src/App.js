@@ -48,7 +48,15 @@ function App() {
   }
 
   const reset = () => {
-    setSeconds(initialSec);
+    switch(initialSec) {
+      case 1500:
+        setSeconds(1500);
+      case 300:
+        setSeconds(300);
+      case 600:
+        setSeconds(600);
+    }
+    
   }
   return (
     <>
