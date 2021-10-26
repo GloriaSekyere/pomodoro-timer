@@ -7,7 +7,7 @@ import { Notifications } from './components/Notifications';
 import { Setings } from './components/Setings';
 
 function App() {
-  let initialSec = 1500;
+  const [initialSec, setInitialSec] = useState(1500);
   const [seconds, setSeconds] = useState(initialSec);
   const [isRunning, setIsRunning] = useState(false);
   
@@ -24,18 +24,18 @@ function App() {
   let sec = Math.ceil(seconds % 60);
 
   const pomodoro = () => {
-    initialSec = 1500;
-    setSeconds(initialSec);
+    setInitialSec(1500);
+    setSeconds(1500);
     setIsRunning(true);
   }
   const shortBreak = () => {
-    initialSec = 300;
-    setSeconds(initialSec);
+    setInitialSec(300);
+    setSeconds(300);
     setIsRunning(true);
   }
   const longBreak = () => {
-    initialSec = 600;
-    setSeconds(initialSec);
+    setInitialSec(600);
+    setSeconds(600);
     setIsRunning(true);
   }
 
@@ -50,11 +50,14 @@ function App() {
   const reset = () => {
     switch(initialSec) {
       case 1500:
-        setSeconds(1500);
+        setSeconds(initialSec);
+        break;
       case 300:
-        setSeconds(300);
+        setSeconds(initialSec);
+        break;
       case 600:
-        setSeconds(600);
+        setSeconds(initialSec);
+        break;
     }
     
   }
